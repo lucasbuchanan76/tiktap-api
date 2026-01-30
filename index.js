@@ -6,7 +6,11 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 
 // CORS - Allow all origins
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(express.json());
 
@@ -192,7 +196,7 @@ async function generateVoice(script, voiceType) {
     },
     body: JSON.stringify({
       text: script,
-      model_id: 'eleven_monolingual_v1',
+      model_id: 'eleven_turbo_v2_5',
       voice_settings: {
         stability: 0.5,
         similarity_boost: 0.75,
@@ -318,4 +322,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`TIKTAP.AI API running on port ${PORT}`);
 });
-
