@@ -1,4 +1,1 @@
-const cors = require('cors')
-app.use(cors({ 
-  origin: ['https://tiktap.social', 'http://localhost:3000'] 
-}))
+npm install cors
